@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  t: MyString
+  list: one
+  type: 
+  state: MyString
+  description: MyString
+  priority: 1
+  valid_from: 2016-11-28 17:37:00
+  valid_until: 2016-11-28 17:37:00
+  percenentage: 1.5
+
+two:
+  t: MyString
+  list: two
+  type: 
+  state: MyString
+  description: MyString
+  priority: 1
+  valid_from: 2016-11-28 17:37:00
+  valid_until: 2016-11-28 17:37:00
+  percenentage: 1.5
