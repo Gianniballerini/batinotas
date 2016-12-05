@@ -25,11 +25,10 @@ class TemporalTasksController < ApplicationController
   # POST /temporal_tasks.json
   def create
     @temporal_task = TemporalTask.new(temporal_task_params)
-    @list = List.find_by(params[:id]).id
 
     respond_to do |format|
       if @temporal_task.save
-        format.html { redirect_to @temporal_task, notice: 'Temporal task was successfully created.' }
+        format.html { redirect_to @list, notice: 'Temporal task was successfully created.' }
         format.json { render :show, status: :created, location: @temporal_task }
       else
         format.html { render :new }
@@ -43,7 +42,7 @@ class TemporalTasksController < ApplicationController
   def update
     respond_to do |format|
       if @temporal_task.update(temporal_task_params)
-        format.html { redirect_to @temporal_task, notice: 'Temporal task was successfully updated.' }
+        format.html { redirect_to @list, notice: 'Temporal task was successfully updated.' }
         format.json { render :show, status: :ok, location: @temporal_task }
       else
         format.html { render :edit }
@@ -57,7 +56,7 @@ class TemporalTasksController < ApplicationController
   def destroy
     @temporal_task.destroy
     respond_to do |format|
-      format.html { redirect_to temporal_tasks_url, notice: 'Temporal task was successfully destroyed.' }
+      format.html { redirect_to @list, notice: 'Temporal task was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -66,6 +65,8 @@ class TemporalTasksController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_temporal_task
       @temporal_task = TemporalTask.find(params[:id])
+      @list = List.find_by(params[:id])
+      @list_id = List.find_by(params[:id]).id
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

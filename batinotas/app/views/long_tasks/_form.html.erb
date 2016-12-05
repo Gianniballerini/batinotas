@@ -7,7 +7,7 @@
     <%= f.input :priority %>
     <%= f.input :percentage %>
     <%= f.input :type, :as => :hidden, input_html: { readonly: true} %>
-    <%= f.association :list, selected: params[:id] %>
+    <%= f.association :list, selected: @list_id %>
   </div>
 
   <div class="form-actions">

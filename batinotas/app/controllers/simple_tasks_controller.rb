@@ -10,6 +10,7 @@ class SimpleTasksController < ApplicationController
   # GET /simple_tasks/1
   # GET /simple_tasks/1.json
   def show
+    @list_id = List.find_by(params[:id]).id
   end
 
   # GET /simple_tasks/new
@@ -19,17 +20,19 @@ class SimpleTasksController < ApplicationController
 
   # GET /simple_tasks/1/edit
   def edit
+    @list = List.find_by(params[:id])
   end
 
   # POST /simple_tasks
   # POST /simple_tasks.json
   def create
     @simple_task = SimpleTask.new(simple_task_params)
-    @list = List.find_by(params[:id]).id
+    @list_id = List.find_by(params[:id]).id
+    @list = List.find_by(params[:id])
 
     respond_to do |format|
       if @simple_task.save
-        format.html { redirect_to @simple_task, notice: 'Simple task was successfully created.' }
+        format.html { redirect_to @list, notice: 'Simple task was successfully created.' }
         format.json { render :show, status: :created, location: @simple_task }
       else
         format.html { render :new }
@@ -41,9 +44,10 @@ class SimpleTasksController < ApplicationController
   # PATCH/PUT /simple_tasks/1
   # PATCH/PUT /simple_tasks/1.json
   def update
+    @list = List.find_by(params[:id])
     respond_to do |format|
       if @simple_task.update(simple_task_params)
-        format.html { redirect_to @simple_task, notice: 'Simple task was successfully updated.' }
+        format.html { redirect_to @list, notice: 'Simple task was successfully updated.' }
         format.json { render :show, status: :ok, location: @simple_task }
       else
         format.html { render :edit }
@@ -56,8 +60,9 @@ class SimpleTasksController < ApplicationController
   # DELETE /simple_tasks/1.json
   def destroy
     @simple_task.destroy
+    @list = List.find_by(params[:id])
     respond_to do |format|
-      format.html { redirect_to simple_tasks_url, notice: 'Simple task was successfully destroyed.' }
+      format.html { redirect_to @list, notice: 'Simple task was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

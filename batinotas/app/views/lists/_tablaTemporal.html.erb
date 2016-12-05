@@ -6,7 +6,7 @@
       <th>Priority</th>
       <th>Valid from</th>
       <th>Valid until</th>
-      <th colspan="3"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
@@ -18,7 +18,6 @@
         <td><%= temporal_task.priority %></td>
         <td><%= temporal_task.valid_from %></td>
         <td><%= temporal_task.valid_until %></td>
-        <td><%= link_to 'Show', temporal_task %></td>
         <td><%= link_to 'Edit', edit_temporal_task_path(temporal_task) %></td>
         <td><%= link_to 'Destroy', temporal_task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

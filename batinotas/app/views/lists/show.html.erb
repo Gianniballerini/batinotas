@@ -1,27 +1,37 @@
 <p id="notice"><%= notice %></p>
 
 <div class="jumbotron">
-<h1>
-  <strong>Name:</strong>
-  <%= @list.name %>
-</h1>
 
-<h1>
-  <strong>Url:</strong>
-  <%= @list.url %>
-</h1>
+	<h1>
+	  <strong>Name:</strong>
+	  <%= @list.name %>
+	</h1>
+
+	<h1>
+	  <strong>Url:</strong>
+	  <%= @list.url %>
+	</h1>
+
+	
 </div>
+	<%= link_to 'Edit', edit_list_path(@list) %> |
+	<%= link_to 'Back', new_list_path %>	
 
-<%= link_to 'Edit', edit_list_path(@list) %> |
-<%= link_to 'Back', new_list_path %>
+<div class='row'>
 
-</br>
-<%= render 'tablaSimple' %>
-<%= link_to 'New Simple Task', new_simple_task_path(:id => @list.id) %>
-</br>
-<%= render 'tablaTemporal' %>
-<%= link_to 'New Temporal Task', new_temporal_task_path(:id => @list.id) %>
-</br>
-<%= render 'tablaLong' %>
-<%= link_to 'New Long Task', new_long_task_path(:id => @list.id) %>
+	<div class="col-md-6" >
+		<%= render 'tablaSimple' %>
+		<%= link_to 'New Simple Task', new_simple_task_path(:id => @list.id) %>
+	</div>
 
+	<div class="col-md-6" >
+		<%= render 'tablaTemporal' %>
+		<%= link_to 'New Temporal Task', new_temporal_task_path(:id => @list.id) %>	
+	</div>
+
+	<div class="col-md-6" >
+		<%= render 'tablaLong' %>
+		<%= link_to 'New Long Task', new_long_task_path(:id => @list.id) %>
+	</div>		
+		
+</div>
