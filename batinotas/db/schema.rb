@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161128222748) do
+ActiveRecord::Schema.define(version: 20161202200305) do
 
   create_table "lists", force: :cascade do |t|
     t.string   "name"
@@ -25,13 +25,13 @@ ActiveRecord::Schema.define(version: 20161128222748) do
     t.integer  "list_id"
     t.string   "type"
     t.string   "state"
-    t.string   "description"
+    t.text     "description"
     t.integer  "priority"
     t.datetime "valid_from"
     t.datetime "valid_until"
-    t.float    "percenentage"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.float    "percentage"
     t.index ["list_id"], name: "index_tasks_on_list_id"
   end
 

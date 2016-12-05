@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @temporal_task.description %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @temporal_task.state %>
+</p>
+
+<p>
+  <strong>Priority:</strong>
+  <%= @temporal_task.priority %>
+</p>
+
+<p>
+  <strong>Valid from:</strong>
+  <%= @temporal_task.valid_from %>
+</p>
+
+<p>
+  <strong>Valid until:</strong>
+  <%= @temporal_task.valid_until %>
+</p>
+
+<%= link_to 'Edit', edit_temporal_task_path(@temporal_task) %> |
+<%= link_to 'Back', temporal_tasks_path %>

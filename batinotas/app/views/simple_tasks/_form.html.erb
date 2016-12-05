@@ -1,0 +1,15 @@
+<%= simple_form_for(@simple_task) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :description %>
+    <%= f.input :state %>
+    <%= f.input :priority %>
+    <%= f.input :type, :as => :hidden, input_html: { readonly: true} %>
+    <%= f.association :list, selected: params[:id] %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

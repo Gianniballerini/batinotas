@@ -1,0 +1,1 @@
+json.array! @simple_tasks, partial: 'simple_tasks/simple_task', as: :simple_task

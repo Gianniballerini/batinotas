@@ -1,3 +1,10 @@
 class Task < ApplicationRecord
-  belongs_to :list
+	
+  	validates :description,  presence: true, length: { maximum: 255 }
+
+	validates :priority,  presence: true
+
+	validates :state,  presence: true
+
+	belongs_to :list
 end

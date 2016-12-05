@@ -1,0 +1,17 @@
+<%= simple_form_for(@temporal_task) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :description %>
+    <%= f.input :state %>
+    <%= f.input :priority %>
+    <%= f.input :valid_from %>
+    <%= f.input :valid_until %>
+    <%= f.input :type, :as => :hidden, input_html: { readonly: true} %>
+    <%= f.association :list, selected: params[:id] %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

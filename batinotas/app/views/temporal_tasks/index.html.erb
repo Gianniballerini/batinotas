@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Temporal Tasks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>State</th>
+      <th>Priority</th>
+      <th>Valid from</th>
+      <th>Valid until</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @temporal_tasks.each do |temporal_task| %>
+      <tr>
+        <td><%= temporal_task.description %></td>
+        <td><%= temporal_task.state %></td>
+        <td><%= temporal_task.priority %></td>
+        <td><%= temporal_task.valid_from %></td>
+        <td><%= temporal_task.valid_until %></td>
+        <td><%= link_to 'Show', temporal_task %></td>
+        <td><%= link_to 'Edit', edit_temporal_task_path(temporal_task) %></td>
+        <td><%= link_to 'Destroy', temporal_task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Temporal Task', new_temporal_task_path %>

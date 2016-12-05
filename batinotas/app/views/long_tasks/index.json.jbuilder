@@ -1,0 +1,1 @@
+json.array! @long_tasks, partial: 'long_tasks/long_task', as: :long_task
