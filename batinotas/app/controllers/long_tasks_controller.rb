@@ -1,5 +1,6 @@
 class LongTasksController < ApplicationController
   before_action :set_long_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_common_stuff
 
   # GET /long_tasks
   # GET /long_tasks.json
@@ -10,7 +11,6 @@ class LongTasksController < ApplicationController
   # GET /long_tasks/1
   # GET /long_tasks/1.json
   def show
-    @list_id = List.find_by(params[:id]).id
   end
 
   # GET /long_tasks/new
@@ -20,15 +20,12 @@ class LongTasksController < ApplicationController
 
   # GET /long_tasks/1/edit
   def edit
-    @list = List.find_by(params[:id])
   end
 
   # POST /long_tasks
   # POST /long_tasks.json
   def create
     @long_task = LongTask.new(long_task_params)
-    @list_id = List.find_by(params[:id]).id
-    @list = List.find_by(params[:id])
 
     respond_to do |format|
       if @long_task.save
@@ -44,7 +41,6 @@ class LongTasksController < ApplicationController
   # PATCH/PUT /long_tasks/1
   # PATCH/PUT /long_tasks/1.json
   def update
-    @list = List.find_by(params[:id])
     respond_to do |format|
       if @long_task.update(long_task_params)
         format.html { redirect_to @list, notice: 'Long task was successfully updated.' }
@@ -59,7 +55,6 @@ class LongTasksController < ApplicationController
   # DELETE /long_tasks/1
   # DELETE /long_tasks/1.json
   def destroy
-    @list = List.find_by(params[:id])
     @long_task.destroy
     respond_to do |format|
       format.html { redirect_to @list, notice: 'Long task was successfully destroyed.' }
@@ -71,8 +66,11 @@ class LongTasksController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_long_task
       @long_task = LongTask.find(params[:id])
-      @list_id = List.find_by(params[:id]).id
+    end
+
+    def set_common_stuff  
       @list = List.find_by(params[:id])
+      @list_id = List.find_by(params[:id]).id
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

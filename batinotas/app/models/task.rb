@@ -7,4 +7,9 @@ class Task < ApplicationRecord
 	validates :state,  presence: true
 
 	belongs_to :list
+	
+
+	scope :long, ->{ where(type: 'LongTask') }
+	scope :temporal, ->{ where(type: 'TemporalTask') }
+	scope :simple, ->{ where(type: 'SimpleTask') }
 end

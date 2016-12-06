@@ -1,5 +1,6 @@
 class TemporalTasksController < ApplicationController
   before_action :set_temporal_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_common_stuff
 
   # GET /temporal_tasks
   # GET /temporal_tasks.json
@@ -25,7 +26,6 @@ class TemporalTasksController < ApplicationController
   # POST /temporal_tasks.json
   def create
     @temporal_task = TemporalTask.new(temporal_task_params)
-
     respond_to do |format|
       if @temporal_task.save
         format.html { redirect_to @list, notice: 'Temporal task was successfully created.' }
@@ -65,9 +65,13 @@ class TemporalTasksController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_temporal_task
       @temporal_task = TemporalTask.find(params[:id])
+    end
+
+    def set_common_stuff  
       @list = List.find_by(params[:id])
       @list_id = List.find_by(params[:id]).id
     end
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def temporal_task_params

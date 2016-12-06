@@ -1,7 +1,7 @@
 class List < ApplicationRecord
-	validates :url, uniqueness: true
+	validates :url, uniqueness: true, presence: true
 	validates :name, presence: true
-	has_many :tasks, dependent: :destroy #destruye los task asociados
+	has_many :tasks, dependent: :destroy #destruye los task asociados 
 
 
 	before_validation(on: :create) do

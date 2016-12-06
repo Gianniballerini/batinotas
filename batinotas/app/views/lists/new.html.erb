@@ -1,5 +1,13 @@
-<h1>New List</h1>
 
-<%= render 'form', list: @list %>
+<div class="jumbotron">
+	<%= render 'form', list: @list %>
+</div>
 
-<%= link_to 'Back', lists_path %>
+
+<br>
+
+<% @cook.each do |cookie| %>
+	
+	<%= link_to cookie, cookie , class: "btn btn-primary btn-lg btn-block"%>
+
+<% end %>
