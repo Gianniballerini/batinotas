@@ -8,7 +8,7 @@
     <%= f.input :valid_from %>
     <%= f.input :valid_until %>
     <%= f.input :type, :as => :hidden, input_html: { readonly: true} %>
-    <%= f.association :list, selected: @list_id %>
+    <%= f.association :list, :as => :hidden, input_html: {value: @list_id , readonly: true} %>
   </div>
 
   <div class="form-actions">

@@ -3,13 +3,11 @@ class TemporalTasksController < ApplicationController
   before_action :set_common_stuff
 
   # GET /temporal_tasks
-  # GET /temporal_tasks.json
   def index
     @temporal_tasks = TemporalTask.all
   end
 
   # GET /temporal_tasks/1
-  # GET /temporal_tasks/1.json
   def show
   end
 
@@ -23,42 +21,28 @@ class TemporalTasksController < ApplicationController
   end
 
   # POST /temporal_tasks
-  # POST /temporal_tasks.json
   def create
     @temporal_task = TemporalTask.new(temporal_task_params)
-    respond_to do |format|
-      if @temporal_task.save
-        format.html { redirect_to @list, notice: 'Temporal task was successfully created.' }
-        format.json { render :show, status: :created, location: @temporal_task }
-      else
-        format.html { render :new }
-        format.json { render json: @temporal_task.errors, status: :unprocessable_entity }
-      end
+    if @temporal_task.save
+      redirect_to @list, notice: 'Temporal task was successfully created.'
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /temporal_tasks/1
-  # PATCH/PUT /temporal_tasks/1.json
   def update
-    respond_to do |format|
-      if @temporal_task.update(temporal_task_params)
-        format.html { redirect_to @list, notice: 'Temporal task was successfully updated.' }
-        format.json { render :show, status: :ok, location: @temporal_task }
-      else
-        format.html { render :edit }
-        format.json { render json: @temporal_task.errors, status: :unprocessable_entity }
-      end
+    if @temporal_task.update(temporal_task_params)
+      redirect_to @list, notice: 'Temporal task was successfully updated.'
+    else
+      render :edit
     end
   end
 
   # DELETE /temporal_tasks/1
-  # DELETE /temporal_tasks/1.json
   def destroy
     @temporal_task.destroy
-    respond_to do |format|
-      format.html { redirect_to @list, notice: 'Temporal task was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to @list, notice: 'Temporal task was successfully destroyed.'
   end
 
   private

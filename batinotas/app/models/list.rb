@@ -9,7 +9,7 @@ class List < ApplicationRecord
   	end
 
   	def to_param
-  		url
+		url
   	end
 
 end

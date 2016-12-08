@@ -2,13 +2,11 @@ class ListsController < ApplicationController
   before_action :set_list, only: [:show, :edit, :update, :destroy]
 
   # GET /lists
-  # GET /lists.json
   def index
     @lists = List.all
   end
 
   # GET /lists/1
-  # GET /lists/1.json
   def show
   end
 
@@ -25,7 +23,6 @@ class ListsController < ApplicationController
 
 
   # POST /lists
-  # POST /lists.json
   def create
     @list = List.new(list_params)
     if @list.save
@@ -37,7 +34,6 @@ class ListsController < ApplicationController
   end
 
   # PATCH/PUT /lists/1
-  # PATCH/PUT /lists/1.json
   def update
     if @list.update(list_params)
       redirect_to @list, notice: 'List was successfully updated.'
@@ -47,7 +43,6 @@ class ListsController < ApplicationController
   end
 
   # DELETE /lists/1
-  # DELETE /lists/1.json
   def destroy
     remove_list_from_cookie @list
     @list.destroy
@@ -90,10 +85,8 @@ class ListsController < ApplicationController
     end
 
     def remove_list_from_cookie(list)
-      #if list_cookie.include? list.url
       @cookie_array = cookie_to_array(cookies[:listsCookie])
       @cookie_array.delete(list.url)
       cookies[:listsCookie] = array_to_string @cookie_array
-      #end
     end
 end

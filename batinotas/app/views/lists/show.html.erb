@@ -20,18 +20,21 @@
 <div class='row'>
 
 	<div class="col-md-6" >
+		<h1> Simple Tasks </h1>
 		<%= render 'tabla_simple' %>
-		<%= link_to 'New Simple Task', new_simple_task_path(:id => @list.id) %>
+		<%= link_to 'New Simple Task', new_simple_task_path(:id => @list.id), class: "btn btn-lg btn-success" %>
 	</div>
 
 	<div class="col-md-6" >
+		<h1> Temporal Tasks </h1>
 		<%= render 'tabla_temporal' %>
-		<%= link_to 'New Temporal Task', new_temporal_task_path(:id => @list.id) %>	
+		<%= link_to 'New Temporal Task', new_temporal_task_path(:id => @list.id), class: "btn btn-lg btn-success" %>	
 	</div>
 
 	<div class="col-md-6" >
+		<h1> Long Tasks </h1>
 		<%= render 'tabla_long' %>
-		<%= link_to 'New Long Task', new_long_task_path(:id => @list.id) %>
+		<%= link_to 'New Long Task', new_long_task_path(:id => @list.id), class: "btn btn-lg btn-success" %>
 	</div>		
 		
 </div>

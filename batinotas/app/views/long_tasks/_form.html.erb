@@ -1,17 +1,24 @@
-<%= simple_form_for(@long_task) do |f| %>
+<%= simple_form_for @long_task, class: "form-horizontal" do |f| %>
   <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :description %>
-    <%= f.input :state %>
-    <%= f.input :priority %>
-    <%= f.input :percentage %>
+  <div class="form-group form-group-lg  ">
+    <div class="col-sm-10">
+      <%= f.input :description, input_html: { class: 'form-control' } %>
+    </div>
+    <div class="col-sm-10">
+      <%= f.input :state, collection: [ "Pendent", "Doing it", "Done"], input_html: { class: 'form-control' } %>
+    </div>
+    <div class="col-sm-10">
+      <%= f.input :priority, collection: [ "!!!", "!!", "!"] , input_html: { class: 'form-control' }%>
+    </div>
+    <div class="col-sm-10">
+      <%= f.input :percentage, as: :range, input_html: {onchange: "rangevalue.value=value", class: 'bar', min: 0.0, max: 100.0} %>
+    <p>%</p><output id="rangevalue">50</output>
+    </div>
     <%= f.input :type, :as => :hidden, input_html: { readonly: true} %>
-    <%= f.association :list, selected: @list_id %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+    <%= f.association :list, :as => :hidden, input_html: {value: @list_id , readonly: true} %>
+    <div class="col-sm-10">
+      <%= f.button :submit , class: "btn btn-success"%>
+    </div>
+</div>
 <% end %>
 

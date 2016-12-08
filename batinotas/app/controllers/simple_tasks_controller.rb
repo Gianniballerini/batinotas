@@ -3,13 +3,11 @@ class SimpleTasksController < ApplicationController
   before_action :set_common_stuff
 
   # GET /simple_tasks
-  # GET /simple_tasks.json
   def index
     @simple_tasks = SimpleTask.all
   end
 
   # GET /simple_tasks/1
-  # GET /simple_tasks/1.json
   def show
   end
 
@@ -23,43 +21,29 @@ class SimpleTasksController < ApplicationController
   end
 
   # POST /simple_tasks
-  # POST /simple_tasks.json
   def create
     @simple_task = SimpleTask.new(simple_task_params)
 
-    respond_to do |format|
-      if @simple_task.save
-        format.html { redirect_to @list, notice: 'Simple task was successfully created.' }
-        format.json { render :show, status: :created, location: @simple_task }
-      else
-        format.html { render :new }
-        format.json { render json: @simple_task.errors, status: :unprocessable_entity }
-      end
+    if @simple_task.save
+      redirect_to @list, notice: 'Simple task was successfully created.'
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /simple_tasks/1
-  # PATCH/PUT /simple_tasks/1.json
   def update
-    respond_to do |format|
-      if @simple_task.update(simple_task_params)
-        format.html { redirect_to @list, notice: 'Simple task was successfully updated.' }
-        format.json { render :show, status: :ok, location: @simple_task }
-      else
-        format.html { render :edit }
-        format.json { render json: @simple_task.errors, status: :unprocessable_entity }
-      end
+    if @simple_task.update(simple_task_params)
+      redirect_to @list, notice: 'Simple task was successfully updated.'
+    else
+      render :edit
     end
   end
 
   # DELETE /simple_tasks/1
-  # DELETE /simple_tasks/1.json
   def destroy
     @simple_task.destroy
-    respond_to do |format|
-      format.html { redirect_to @list, notice: 'Simple task was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to @list, notice: 'Simple task was successfully destroyed.'
   end
 
   private

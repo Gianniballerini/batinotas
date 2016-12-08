@@ -1,0 +1,22 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>State</th>
+      <th>Priority</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @list.tasks.simple.each do |simple_task| %>
+      <tr>
+        <td><%= simple_task.description %></td>
+        <td><%= simple_task.state %></td>
+        <td><%= simple_task.priority %></td>
+        <td><%= link_to 'Edit', edit_simple_task_path(simple_task) %></td>
+        <td><%= link_to 'Destroy', simple_task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

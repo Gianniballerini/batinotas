@@ -3,13 +3,11 @@ class LongTasksController < ApplicationController
   before_action :set_common_stuff
 
   # GET /long_tasks
-  # GET /long_tasks.json
   def index
     @long_tasks = LongTask.all
   end
 
   # GET /long_tasks/1
-  # GET /long_tasks/1.json
   def show
   end
 
@@ -23,43 +21,30 @@ class LongTasksController < ApplicationController
   end
 
   # POST /long_tasks
-  # POST /long_tasks.json
   def create
     @long_task = LongTask.new(long_task_params)
 
-    respond_to do |format|
-      if @long_task.save
-        format.html { redirect_to @list, notice: 'Long task was successfully created.' }
-        format.json { render :show, status: :created, location: @long_task }
-      else
-        format.html { render :new }
-        format.json { render json: @long_task.errors, status: :unprocessable_entity }
-      end
+    if @long_task.save
+      redirect_to @list, notice: 'Long task was successfully created.'
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /long_tasks/1
-  # PATCH/PUT /long_tasks/1.json
   def update
-    respond_to do |format|
-      if @long_task.update(long_task_params)
-        format.html { redirect_to @list, notice: 'Long task was successfully updated.' }
-        format.json { render :show, status: :ok, location: @long_task }
-      else
-        format.html { render :edit }
-        format.json { render json: @long_task.errors, status: :unprocessable_entity }
-      end
+    if @long_task.update(long_task_params)
+      redirect_to @list, notice: 'Long task was successfully updated.'
+    else
+      render :edit
     end
   end
 
   # DELETE /long_tasks/1
-  # DELETE /long_tasks/1.json
   def destroy
     @long_task.destroy
-    respond_to do |format|
-      format.html { redirect_to @list, notice: 'Long task was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to @list, notice: 'Long task was successfully destroyed.'
+    head :no_content
   end
 
   private
