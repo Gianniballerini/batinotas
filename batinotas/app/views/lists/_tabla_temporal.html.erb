@@ -18,8 +18,8 @@
         <td><%= temporal_task.priority %></td>
         <td><%= temporal_task.valid_from %></td>
         <td><%= temporal_task.valid_until %></td>
-        <td><%= link_to 'Edit', edit_temporal_task_path(temporal_task) %></td>
-        <td><%= link_to 'Destroy', temporal_task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '✎', edit_temporal_task_path(temporal_task), class: "btn btn-secondary" %></td>
+        <td><%= link_to '🚫', temporal_task, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-secondary" %></td>
       </tr>
     <% end %>
   </tbody>

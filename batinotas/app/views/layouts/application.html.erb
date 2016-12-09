@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="container-fluid">
+<html>
   <head>
     <title>Batinotas</title>
     <%= csrf_meta_tags %>
@@ -8,9 +8,9 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <div >
 	  <body>
-	    <%= yield %>
+      <div id="main-container" class="container-fluid">
+          <%= yield %>
+      </div>
 	  </body>
-  </div>
 </html>

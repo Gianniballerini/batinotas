@@ -1,13 +1,22 @@
-
-<div class="jumbotron">
-	<%= render 'form', list: @list %>
+<section class="jumbotron text-xs-center">
+	<div class="container">
+		<h1 class="jumbotron-heading">𝔅ati-notas</h1>
+		<p class="lead text-muted">
+			Welcome to the best to-do list app. 
+			(for bats)
+		</p>
+	</div>
+</section>
+<div class="container">
+	<div class="row">
+		<%= render 'form', list: @list %>
+	</div>
 </div>
-
-
-<br>
-
-<% @cook.each do |cookie| %>
+	<br>
 	
-	<%= link_to cookie, cookie , class: "btn btn-primary btn-lg btn-block"%>
+	<br>
+	<% @cook.each do |cookie| %>
+	
+		<%= link_to cookie, cookie , class: "btn btn-primary btn-lg btn-block"%>
 
-<% end %>
+	<% end %>

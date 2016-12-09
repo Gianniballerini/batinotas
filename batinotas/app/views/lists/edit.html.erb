@@ -1,5 +1,19 @@
-<h1>Editing List</h1>
+	
+<section class="jumbotron text-xs-center">
+	<div class="container">
+		<h1 class="jumbotron-heading">Editing List</h1>
+		<p class="lead text-muted">
+			I'm sorry but the URL it's a fixed value. Once set it cannot be changed, so you only get to change your list name.
 
-<%= render 'form', list: @list %>
+		</p>
+		<%= link_to '↵ Go Back', @list , class: "btn btn-info"%>
+	</div>
+</section>
+<div class="container">
+	<div class="row">
+		<%= render 'form', list: @list %>
+	</div>
+</div>
 
-<%= link_to 'Back', @list %>
+
+

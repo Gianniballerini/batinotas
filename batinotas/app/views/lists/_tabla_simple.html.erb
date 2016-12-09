@@ -14,8 +14,8 @@
         <td><%= simple_task.description %></td>
         <td><%= simple_task.state %></td>
         <td><%= simple_task.priority %></td>
-        <td><%= link_to 'Edit', edit_simple_task_path(simple_task) %></td>
-        <td><%= link_to 'Destroy', simple_task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '✎', edit_simple_task_path(simple_task), class: "btn btn-secondary" %></td>
+        <td><%= link_to '🚫', simple_task, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-secondary" %></td>
       </tr>
     <% end %>
   </tbody>

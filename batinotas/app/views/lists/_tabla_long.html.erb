@@ -16,8 +16,8 @@
         <td><%= long_task.state %></td>
         <td><%= long_task.priority %></td>
         <td><%= long_task.percentage %></td>
-        <td><%= link_to 'Edit', edit_long_task_path(long_task) %></td>
-        <td><%= link_to 'Destroy', long_task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '✎', edit_long_task_path(long_task), class: "btn btn-secondary" %></td>
+        <td><%= link_to '🚫', long_task, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-secondary" %></td>
       </tr>
     <% end %>
   </tbody>
