@@ -25,7 +25,10 @@ class ListsController < ApplicationController
   # POST /lists
   def create
     @list = List.new(list_params)
+    @list.url = @list.name.parameterize
     if @list.save
+      list_cookie
+      @cook = cookie_to_array(cookies[:listsCookie])
       add_list_to_cookie @list
       redirect_to @list, notice: 'List was successfully created.'
     else

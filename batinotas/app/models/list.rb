@@ -1,12 +1,8 @@
 class List < ApplicationRecord
-	validates :url, uniqueness: true, presence: true
+	validates :url, uniqueness: true
 	validates :name, presence: true
-	has_many :tasks, dependent: :destroy #destruye los task asociados 
+	has_many :tasks, -> { order('priority DESC') }, dependent: :destroy #destruye los task asociados al borrar
 
-
-	before_validation(on: :create) do
-    	self.url = self.name.parameterize
-  	end
 
   	def to_param
 		url

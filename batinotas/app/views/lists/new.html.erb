@@ -12,11 +12,7 @@
 		<%= render 'form', list: @list %>
 	</div>
 </div>
-	<br>
-	
-	<br>
-	<% @cook.each do |cookie| %>
-	
-		<%= link_to cookie, cookie , class: "btn btn-primary btn-lg btn-block"%>
 
-	<% end %>
+<% @cook.each do |cookie| %>
+	<%= link_to cookie, cookie , class: "btn btn-primary btn-lg btn-block"%>
+<% end %>

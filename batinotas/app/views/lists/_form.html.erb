@@ -1,4 +1,4 @@
-<div class="col-xs-12 col-xl-11">
+<div class="col-xs-12 col-xl-12 text-xs-center">
 	<%= simple_form_for @list, class: "form-horizontal"  do |f| %>
 
 	<p class="text-danger"><%= f.error_notification %></p>
@@ -7,10 +7,9 @@
 			<br>
 			<%= f.input :url, label: false, input_html: { class: 'form-control', readonly: true }, placeholder: "nombre-de-la-lista (URL resultante)" %>
 		</div>
-</div>
-<div class="col-xl-1">
-		<%= f.button :submit , class: "btn btn-success"%>
-	<% end %>
-</div>
 
+	<%= f.button :submit , class: "btn btn-success"%>
+	<% end %>
+	<br>
+</div>
 

@@ -11,7 +11,7 @@
   </thead>
 
   <tbody>
-    <% @list.tasks.temporal.each do |temporal_task| %>
+    <% @list.tasks.temporal.valid(Time.now).each do |temporal_task| %>
       <tr>
         <td><%= temporal_task.description %></td>
         <td><%= temporal_task.state %></td>
