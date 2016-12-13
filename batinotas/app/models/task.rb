@@ -2,11 +2,11 @@ class Task < ApplicationRecord
 	
   	validates :description,  presence: true, length: { maximum: 255 }
 
-	validates :priority,  presence: true
+	validates :priority,  presence: true, numericality: { less_than_or_equal_to: 3, greater_than_or_equal_to: 1  }
 
-	validates :state,  presence: true
+	validates :state,  presence: true,  inclusion: { in: %w(pending on_it done expired), message: "%{value} is not a valid value" }
 
-	belongs_to :list
+	belongs_to :list, :touch => true
 	
 
 	scope :long, ->{ where(type: 'LongTask') }

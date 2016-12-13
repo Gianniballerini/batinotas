@@ -12,9 +12,8 @@ class ListsController < ApplicationController
 
   # GET /lists/new
   def new
+    @cook = cookie_to_array(list_cookie)
     @list = List.new
-    list_cookie
-    @cook = cookie_to_array(cookies[:listsCookie])
   end
 
   # GET /lists/1/edit
@@ -25,11 +24,9 @@ class ListsController < ApplicationController
   # POST /lists
   def create
     @list = List.new(list_params)
-    @list.url = @list.name.parameterize
     if @list.save
-      list_cookie
-      @cook = cookie_to_array(cookies[:listsCookie])
       add_list_to_cookie @list
+      # @cook = cookie_to_array(list_cookie)
       redirect_to @list, notice: 'List was successfully created.'
     else
       render :new
@@ -49,7 +46,7 @@ class ListsController < ApplicationController
   def destroy
     remove_list_from_cookie @list
     @list.destroy
-    redirect_to lists_url, notice: 'List was successfully destroyed.'
+    redirect_to new_list_path, notice: 'List was successfully destroyed.'
   end
 
   private
@@ -79,10 +76,10 @@ class ListsController < ApplicationController
     end
 
     def add_list_to_cookie(list)
-      @cookie_array = cookie_to_array(cookies[:listsCookie])
+      @cookie_array = cookie_to_array(list_cookie)
       @cookie_array << list.url
       @cookie_array = @cookie_array.last(5)
-      cookies[:listsCookie] = array_to_string @cookie_array
+      cookies[:listsCookie] = array_to_string(@cookie_array)
       #list_cookie << list.url
       #cookies[:listsCookie] = list_cookie.last(5)
     end

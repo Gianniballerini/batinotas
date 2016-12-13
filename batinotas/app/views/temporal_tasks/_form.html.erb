@@ -1,17 +1,69 @@
-<%= simple_form_for(@temporal_task) do |f| %>
-  <%= f.error_notification %>
+<div class="col-xl-12 text-xs-center">
+  <%= simple_form_for @temporal_task, class: "form-horizontal" do |f| %>
+  <p class="text-danger"><%= f.error_notification %></p>
 
-  <div class="form-inputs">
-    <%= f.input :description %>
-    <%= f.input :state %>
-    <%= f.input :priority %>
-    <%= f.input :valid_from %>
-    <%= f.input :valid_until %>
-    <%= f.input :type, :as => :hidden, input_html: { readonly: true} %>
-    <%= f.association :list, :as => :hidden, input_html: {value: @list_id , readonly: true} %>
-  </div>
+  <div class="row">
+    <div class="col-md-3">
+          <h3> Description </h3>
+        </div>
+        <div class="col-md-9">
+          <%= f.input :description , label: false , input_html: { class: 'form-control' } %>
+        </div>
+      </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>
+      <br>
+
+      <div class="row">
+        <div class="col-md-3">
+          <h3> What's the current state of the task? </h3>
+        </div>
+        <div class="col-md-9 radio">
+          <%= f.input :state, collection: { "Starting ~" => "pending", "Finally Done!" => "done", "To late to apologize" => "expired"}, value_method: :last, label_method: :first ,label: false, input_html: { class: 'form-control' }%>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="row">
+        <div class="col-md-3">
+          <h3> Is this: "VERY! SUPER!! or ULTRA!!!?" </h3>
+        </div>
+        <div class="col-md-9">
+        <%= f.input :priority, label: false , collection: { "❗️" => 1, "‼️" => 2, "‼️‼️" =>3}, value_method: :last, label_method: :first , input_html: { class: 'form-control' }%>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="row">
+        <div class="col-md-3">
+          <h3> When will you Start? </h3>
+        </div>
+        <div class="col-md-9">
+          <%= f.input :valid_from , label: false%>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="row">
+        <div class="col-md-3">
+          <h3> When (you think) is going to end? </h3>
+        </div>
+        <div class="col-md-9">
+          <%= f.input :valid_until , label: false%>
+        </div>
+
+      </div>
+       <br>
+      <%= f.input :type, :as => :hidden, input_html: { readonly: true} %>
+      <%= f.association :list, :as => :hidden, input_html: {value: @list_id , readonly: true} %>
+    </div>
+
+
+
+    <div class="col-sm-12">
+      <%= f.button :submit , class: "btn btn-success"%>
+    </div>
+  <% end %>
+</div>

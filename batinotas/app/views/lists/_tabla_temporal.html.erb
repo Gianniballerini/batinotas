@@ -1,26 +1,28 @@
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Description</th>
-      <th>State</th>
-      <th>Priority</th>
-      <th>Valid from</th>
-      <th>Valid until</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @list.tasks.temporal.valid(Time.now).each do |temporal_task| %>
+<% if @list.tasks.temporal.valid(Time.now).any? %>
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td><%= temporal_task.description %></td>
-        <td><%= temporal_task.state %></td>
-        <td><%= temporal_task.priority %></td>
-        <td><%= temporal_task.valid_from %></td>
-        <td><%= temporal_task.valid_until %></td>
-        <td><%= link_to '✎', edit_temporal_task_path(temporal_task), class: "btn btn-secondary" %></td>
-        <td><%= link_to '🚫', temporal_task, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-secondary" %></td>
+        <th>Description</th>
+        <th>State</th>
+        <th>Priority</th>
+        <th>Valid from</th>
+        <th>Valid until</th>
+        <th colspan="2"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @list.tasks.temporal.valid(Time.now).each do |temporal_task| %>
+        <tr>
+          <td><%= temporal_task.description %></td>
+          <td><%= temporal_task.state %></td>
+          <td><%= temporal_task.priority %></td>
+          <td><%= temporal_task.valid_from %></td>
+          <td><%= temporal_task.valid_until %></td>
+          <td><%= link_to '✎', edit_temporal_task_path(temporal_task), class: "btn btn-secondary" %></td>
+          <td><%= link_to '🚫', temporal_task, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-secondary" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

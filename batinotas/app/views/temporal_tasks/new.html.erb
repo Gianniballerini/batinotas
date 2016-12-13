@@ -1,5 +1,12 @@
-<h1>New Temporal Task</h1>
+<section class="jumbotron text-xs-center">
+	<div class="container">
+		<h1 class="jumbotron-heading">New Temporal Task</h1>
+		<%= link_to 'Back', @list, class: "btn btn-info"%>
+	</div>
+</section>
 
-<%= render 'form', temporal_task: @temporal_task %>
-
-<%= link_to 'Back', @list %>
+<div class="container">
+	<div class="row">
+		<%= render 'form', temporal_task: @temporal_task %>
+	</div>
+</div>

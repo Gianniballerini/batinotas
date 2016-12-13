@@ -2,7 +2,7 @@
     <%= simple_form_for @long_task, class: "form-horizontal"  do |f| %>
       <p class="text-danger"><%= f.error_notification %></p>
 
-      <div class="row">
+    <div class="row">
         <div class="col-md-3">
           <h3> Description </h3>
         </div>
@@ -16,7 +16,7 @@
           <h3> What's the current state of the task? </h3>
         </div>
         <div class="col-md-9 radio">
-          <%= f.input :state, collection: { "Starting ~" => "pending", "On it -.-" => "on_it", "Finally Done!" => "done"}, value_method: :last, label_method: :first ,label: false , as: :radio_buttons%>
+          <%= f.input :state, collection: { "Starting ~" => "pending", "On it -.-" => "on_it", "Finally Done!" => "done"}, value_method: :last, label_method: :first ,label: false , input_html: { class: 'form-control' }%>
         </div>
       </div>
       <br>
@@ -34,7 +34,7 @@
           <h3> Percentage of completation </h3>
         </div>
         <div class="col-md-9">
-          <%= f.input :percentage,label: false , as: :range, input_html: {onchange: "rangevalue.value=value", class: 'bar', min: 0.0, max: 100.0, step: 0.2} %>
+          <%= f.input :percentage,label: false , as: :range, input_html: {onchange: "rangevalue.value=value", class: 'form-control', min: 0.0, max: 100.0, step: 0.2} %>
           <output id="rangevalue">
             <% if @long_task.percentage? %>
             <%= @long_task.percentage %>
@@ -47,7 +47,7 @@
       <br>
         <%= f.input :type, :as => :hidden, input_html: { readonly: true} %>
         <%= f.association :list, :as => :hidden, input_html: {value: @list_id , readonly: true} %>
-
+    </div>
         <div class="col-sm-12">
           <%= f.button :submit , class: "btn btn-success"%>
         </div>

@@ -1,24 +1,26 @@
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Description</th>
-      <th>State</th>
-      <th>Priority</th>
-      <th>Percentage</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @list.tasks.long.each do |long_task| %>
+<% if @list.tasks.long.any? %>  
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td><%= long_task.description %></td>
-        <td><%= long_task.state %></td>
-        <td><%= long_task.priority %></td>
-        <td><%= long_task.percentage %></td>
-        <td><%= link_to '✎', edit_long_task_path(long_task), class: "btn btn-secondary" %></td>
-        <td><%= link_to '🚫', long_task, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-secondary" %></td>
+        <th>Description</th>
+        <th>State</th>
+        <th>Priority</th>
+        <th>Percentage</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @list.tasks.long.each do |long_task| %>
+        <tr>
+          <td><%= long_task.description %></td>
+          <td><%= long_task.state %></td>
+          <td><%= long_task.priority %></td>
+          <td><%= long_task.percentage %></td>
+          <td><%= link_to '✎', edit_long_task_path(long_task), class: "btn btn-secondary" %></td>
+          <td><%= link_to '🚫', long_task, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-secondary" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
