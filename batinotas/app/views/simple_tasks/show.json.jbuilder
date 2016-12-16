@@ -1,1 +1,0 @@
-json.partial! "simple_tasks/simple_task", simple_task: @simple_task

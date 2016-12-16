@@ -2,27 +2,20 @@ class TemporalTasksController < ApplicationController
   before_action :set_temporal_task, only: [:show, :edit, :update, :destroy]
   before_action :set_common_stuff
 
-  # GET /temporal_tasks
-  def index
-    @temporal_tasks = TemporalTask.all
-  end
 
-  # GET /temporal_tasks/1
-  def show
-  end
-
-  # GET /temporal_tasks/new
+   # GET /temporal_task/new
   def new
     @temporal_task = TemporalTask.new
   end
 
-  # GET /temporal_tasks/1/edit
+  # GET /temporal_task/1/edit
   def edit
   end
 
   # POST /temporal_tasks
   def create
     @temporal_task = TemporalTask.new(temporal_task_params)
+    @temporal_task.list_id=@list.id
     if @temporal_task.save
       redirect_to @list, notice: 'Temporal task was successfully created.'
     else
@@ -52,13 +45,13 @@ class TemporalTasksController < ApplicationController
     end
 
     def set_common_stuff  
-      @list = List.find_by(params[:id])
-      @list_id = List.find_by(params[:id]).id
+      url=params[:list_id]
+      @list = List.find_by(url: "#{url}") 
     end
 
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def temporal_task_params
-      params.require(:temporal_task).permit(:description, :state, :priority, :valid_from, :valid_until, :type, :list_id)
+      params.require(:temporal_task).permit(:description, :state, :priority, :valid_from, :valid_until, :type)
     end
 end

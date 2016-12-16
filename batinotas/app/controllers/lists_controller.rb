@@ -80,8 +80,6 @@ class ListsController < ApplicationController
       @cookie_array << list.url
       @cookie_array = @cookie_array.last(5)
       cookies[:listsCookie] = array_to_string(@cookie_array)
-      #list_cookie << list.url
-      #cookies[:listsCookie] = list_cookie.last(5)
     end
 
     def remove_list_from_cookie(list)

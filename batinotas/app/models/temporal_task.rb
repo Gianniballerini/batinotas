@@ -1,18 +1,15 @@
 class TemporalTask < Task
 	validates :valid_from,  presence: true
 	validates :valid_until,  presence: true
+	validate :end_date_after_start_date?
 
-  	# before_validation(on: :create) do
-  	# 	if (self.valid_until < self.valid_from )
-  	# 		:abort
-  	# 	end
-  	# end
 
-	before_save do
-		if (self.valid_until < DateTime.now)
-			self.state = "expired"
-		end
-  	end
-
-  	
+  	def end_date_after_start_date?
+  		if valid_until != nil && valid_from
+			 if valid_until < valid_from
+	 	   		errors.add(:valid_until, "can't be before than the starting date")
+	 		end
+	 	end
+	end
+	
 end

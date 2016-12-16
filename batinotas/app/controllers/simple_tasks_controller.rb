@@ -2,15 +2,6 @@ class SimpleTasksController < ApplicationController
   before_action :set_simple_task, only: [:show, :edit, :update, :destroy]
   before_action :set_common_stuff
 
-  # GET /simple_tasks
-  def index
-    @simple_tasks = SimpleTask.all
-  end
-
-  # GET /simple_tasks/1
-  def show
-  end
-
   # GET /simple_tasks/new
   def new
     @simple_task = SimpleTask.new
@@ -23,7 +14,7 @@ class SimpleTasksController < ApplicationController
   # POST /simple_tasks
   def create
     @simple_task = SimpleTask.new(simple_task_params)
-
+    @simple_task.list_id=@list.id
     if @simple_task.save
       redirect_to @list, notice: 'Simple task was successfully created.'
     else
@@ -52,13 +43,13 @@ class SimpleTasksController < ApplicationController
       @simple_task = SimpleTask.find(params[:id])
     end
 
-    def set_common_stuff  
-      @list = List.find_by(params[:id])
-      @list_id = List.find_by(params[:id]).id
+    def set_common_stuff 
+      url=params[:list_id]
+      @list = List.find_by(url: "#{url}") 
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def simple_task_params
-      params.require(:simple_task).permit(:description, :state, :priority, :type, :list_id)
+      params.require(:simple_task).permit(:description, :state, :priority, :type)
     end
 end

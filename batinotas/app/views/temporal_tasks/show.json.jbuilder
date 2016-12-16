@@ -1,1 +1,0 @@
-json.partial! "temporal_tasks/temporal_task", temporal_task: @temporal_task

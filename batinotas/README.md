@@ -1,24 +1,59 @@
-# README
+#Batinotas
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+## Setting the enviroment for the application:
 
-* Ruby version
+1. Run the following code in your console. To clone the github repo to your chosen directory:
 
-* System dependencies
+	```sh	
+		$ git clone git@github.com:Gianniballerini/batinotas.git
+	```
 
-* Configuration
+2. Once cloned you'll need to run the next command to get the necesary dependencies for the proyect to run:
 
-* Database creation
+	```sh
+		$ bundle install
+	```
 
-* Database initialization
+3. Migrate the database:
 
-* How to run the test suite
+	```sh	
+		$ rails db:migrate
+	```
+	3.1 And if you want you can have some defult data already loaded in your database runing the command:
 
-* Services (job queues, cache servers, search engines, etc.)
+		```sh
+			$ rails db:seed
+		```
+4. Start the server and try it out:
 
-* Deployment instructions
+	```sh
+		$ rails s
+	```
 
-* ...
+## Trying it out:
+
+In a web client like Chrome or Safari enter to the URL http://localhost:3000/
+
+This is the default port where rails opens your aplication.
+
+
+## Running Tests
+
+To run the tests you need to open the console and type:
+
+
+a. If you want to run them all at once:
+
+	```sh
+		$ rails test test/models/list_test.rb
+	```
+b. If you want to run them separetly you can also type this:
+
+	```sh
+		$ rails test test/models/list_test.rb
+		$ rails test test/models/task_test.rb
+		$ rails test test/models/simple_task_test.rb
+		$ rails test test/models/temporal_task_test.rb
+		$ rails test test/models/long_task_test.rb
+	```

@@ -13,10 +13,12 @@
 		  <strong>Last Updated:</strong>
 		  <%= @list.updated_at.strftime("%B %d at %I:%M %p") %>
 		</p>
-		<p class="lead text-muted">
-		  <strong>Url:</strong>
-		  <%= @list.url %>
-		</p>
+
+		<div class="input-group">
+		  <span class="input-group-addon" id="basic-addon3">URL</span>
+		  <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" value=<%= request.original_url %>>
+		</div>
+		<br>
 		<p>
 			<%= link_to ' Home ', new_list_path , class: "btn btn-primary" %>
 			<%= link_to ' Edit ', edit_list_path(@list) , class: "btn btn-secondary" %> 
@@ -30,13 +32,13 @@
 	<div class="col-xl-6 col-md-6 col-xs-12" >
 		<h1> Simple Tasks </h1>
 		<%= render 'tabla_simple' %>
-		<%= link_to 'New Simple Task', new_simple_task_path(:id => @list.id), class: "btn btn-lg btn-success" %>
+		<%= link_to 'New Simple Task', new_list_simple_task_path(@list), class: "btn btn-lg btn-success" %>
 	</div>
 
 	<div class="col-xl-6 col-md-6 col-xs-12" >
 		<h1> Long Tasks </h1>
 		<%= render 'tabla_long' %>
-		<%= link_to 'New Long Task', new_long_task_path(:id => @list.id), class: "btn btn-lg btn-success" %>
+		<%= link_to 'New Long Task', new_list_long_task_path(@list), class: "btn btn-lg btn-success" %>
 	</div>
 
 	<div class="col-xl-12 col-xs-12 col-md-12 " >
@@ -50,6 +52,6 @@
 	<div class="col-xl-12 col-xs-12 col-md-12 " >
 		<h1> Temporal Tasks </h1>
 		<%= render 'tabla_temporal' %>
-		<%= link_to 'New Temporal Task', new_temporal_task_path(:id => @list.id), class: "btn btn-lg btn-success" %>	
+		<%= link_to 'New Temporal Task', new_list_temporal_task_path(@list), class: "btn btn-lg btn-success" %>	
 	</div>
 </div>

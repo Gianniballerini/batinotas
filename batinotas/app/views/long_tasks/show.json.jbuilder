@@ -1,1 +1,0 @@
-json.partial! "long_tasks/long_task", long_task: @long_task

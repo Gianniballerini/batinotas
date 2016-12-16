@@ -2,18 +2,10 @@ class LongTasksController < ApplicationController
   before_action :set_long_task, only: [:show, :edit, :update, :destroy]
   before_action :set_common_stuff
 
-  # GET /long_tasks
-  def index
-    @long_tasks = LongTask.all
-  end
-
-  # GET /long_tasks/1
-  def show
-  end
-
   # GET /long_tasks/new
   def new
     @long_task = LongTask.new
+
   end
 
   # GET /long_tasks/1/edit
@@ -23,6 +15,7 @@ class LongTasksController < ApplicationController
   # POST /long_tasks
   def create
     @long_task = LongTask.new(long_task_params)
+    @long_task.list_id=@list.id
 
     if @long_task.save
       redirect_to @list, notice: 'Long task was successfully created.'
@@ -53,13 +46,13 @@ class LongTasksController < ApplicationController
       @long_task = LongTask.find(params[:id])
     end
 
-    def set_common_stuff  
-      @list = List.find_by(params[:id])
-      @list_id = List.find_by(params[:id]).id
+    def set_common_stuff
+      url=params[:list_id]
+      @list = List.find_by(url: "#{url}")   
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def long_task_params
-      params.require(:long_task).permit(:description, :state, :priority, :percentage, :type, :list_id)
+      params.require(:long_task).permit(:description, :state, :priority, :percentage, :type)
     end
 end

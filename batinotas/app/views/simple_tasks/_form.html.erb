@@ -1,17 +1,17 @@
 <div class="col-xl-12 text-xs-center">
-  <%= simple_form_for @simple_task, class: "form-horizontal"  do |f| %>
+  <%= simple_form_for [@list, @simple_task], class: "form-horizontal"  do |f| %>
     <p class="text-danger"><%= f.error_notification %></p>
 
-    <div class="row">
-        <div class="col-md-3">
-          <h3> Description </h3>
-        </div>
-        <div class="col-md-9">
-          <%= f.input :description , label: false , input_html: { class: 'form-control' } %>
-        </div>
-      </div>
+	    <div class="row">
+		<div class="col-md-3">
+		  <h3> Description </h3>
+		</div>
+		<div class="col-md-9">
+		  <%= f.input :description , label: false , input_html: { class: 'form-control' } %>
+		</div>
+	      </div>
 
-      <br>
+	      <br>
 
       <div class="row">
         <div class="col-md-3">
@@ -37,7 +37,6 @@
       <br>
 
       <%= f.input :type, :as => :hidden, input_html: { readonly: true} %>
-      <%= f.association :list, :as => :hidden, input_html: {value: @list_id , readonly: true} %>
     </div>
 
     <div class="col-sm-12">
