@@ -2,6 +2,8 @@
 
 Trabajo integrador Taller de Tecnologias de Produccion de Software. Opcion Ruby.
 
+---
+
 ## Setting the enviroment for the application:
 
 1. Run the following code in your console. To clone the github repo to your chosen directory:
@@ -21,16 +23,22 @@ Trabajo integrador Taller de Tecnologias de Produccion de Software. Opcion Ruby.
 	```sh	
 		$ rails db:migrate
 	```
-	3.1 And if you want you can have some defult data already loaded in your database runing the command:
+
+  And if you want you can have some defult data already loaded in your database runing the command:
 
 		```sh
 			$ rails db:seed
 		```
+
+		The name of the resulting list and corresponding tasks is 'Lista seed' you should be able to acces it through the URL <http://localhost:3000/lista-seed>
+
 4. Start the server and try it out:
 
 	```sh
 		$ rails s
 	```
+
+---
 
 ## Trying it out:
 
@@ -38,6 +46,8 @@ In a web client like Chrome or Safari enter to the URL http://localhost:3000/
 
 This is the default port where rails opens your aplication.
 
+
+---
 
 ## Running Tests
 
