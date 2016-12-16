@@ -17,8 +17,8 @@ list = List.create(name: 'Lista Seed')
 SimpleTask.create(description: 'simple task 1', state: 'pending', priority: 3, list: list)
 SimpleTask.create(description: 'simple task 2', state: 'done', priority: 1, list: list)
 
-TemporalTask.create(description: 'temporal task 1', state: 'pending', priority: 2, validation_start: val_from1, validation_end: val_until1, list: list)
-TemporalTask.create(description: 'temporal task 2', state: 'pending', priority: 1, validation_start:val_from2, validation_end: val_until2, list: list)
-
 LongTask.create(description: 'long task 1', state: 'on_it', priority: 3, percentage: '10', list: list)
 LongTask.create(description: 'long task 2', state: 'pending', priority: 1, percentage: '90', list: list)
+
+TemporalTask.create(description: 'temporal task 1', state: 'pending', priority: 2, valid_from: val_from1, valid_until: val_until1, list: list)
+TemporalTask.create(description: 'temporal task 2', state: 'pending', priority: 1, valid_from:val_from2, valid_until: val_until2, list: list)
