@@ -17,4 +17,9 @@ class ListTest < ActiveSupport::TestCase
     list = List.new(name: "hello !! im a list!")
     assert list.save
   end
+  test "should not create a list with the same url " do
+    list = List.create(name: "nueva lista")
+    list2 = List.create(name: "nueva lista")
+    assert_not list2.save
+  end
 end
