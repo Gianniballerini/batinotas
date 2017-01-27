@@ -9,8 +9,8 @@
 
 val_from1=DateTime.new(2016, 12, 01)
 val_from2=DateTime.new(2016, 12, 01)
-val_until1=DateTime.new(2016, 12, 19)
-val_until2=DateTime.new(2016, 12, 19)
+val_until1=DateTime.new(2017, 12, 19)
+val_until2=DateTime.new(2017, 12, 19)
 
 list = List.create(name: 'Lista Seed')
 

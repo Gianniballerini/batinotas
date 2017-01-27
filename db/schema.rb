@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 20161202200305) do
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.string   "t"
     t.integer  "list_id"
     t.string   "type"
     t.string   "state"
@@ -29,9 +28,9 @@ ActiveRecord::Schema.define(version: 20161202200305) do
     t.integer  "priority"
     t.datetime "valid_from"
     t.datetime "valid_until"
+    t.float    "percentage"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.float    "percentage"
     t.index ["list_id"], name: "index_tasks_on_list_id"
   end
 
