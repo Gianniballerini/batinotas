@@ -42,7 +42,7 @@ Trabajo integrador Taller de Tecnologias de Produccion de Software. Opcion Ruby.
 
 ## Trying it out:
 
-In a web client like Chrome or Safari enter to the URL http://localhost:3000/
+In a web client like Chrome or Safari enter to the URL <http://localhost:3000/>
 
 This is the default port where rails opens your aplication.
 
@@ -69,3 +69,10 @@ b. If you want to run them separetly you can also type this:
 	$ rails test test/models/temporal_task_test.rb
 	$ rails test test/models/long_task_test.rb
 ```
+
+---
+
+## DEMO
+
+To try a demo of how the site works go to: <https://aqueous-caverns-54586.herokuapp.com>
+
